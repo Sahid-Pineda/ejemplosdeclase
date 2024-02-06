@@ -84,7 +84,7 @@ while(seguir):
                                 for carrera in carreras:
                                     if carrera['carrera'] == nombre_carrera:
                                         if carrera['clases']:
-                                            print("Clases: ")
+                                            print(f"Clases de la carrera {nombre_carrera}: ")
                                             for clase in carrera['clases']:
                                                 print(f" - {clase}")
                                         else:
@@ -94,37 +94,34 @@ while(seguir):
                                     print("Carrera no encontrada.")
                             case 3:
                                 nombre_carrera = input("Ingrese el nombre de la carrera: ")
-                                nombre_clase = input("Ingrese el nombre de la clase: ")
-                                nuevo_nombre = input("Ingrese el nuevo nombre de la clase: ")
 
                                 for carrera in carreras:
                                     if carrera['carrera'] == nombre_carrera:
                                         for i, clase in enumerate(carrera['clases']):
+                                            nombre_clase = input("Ingrese el nombre de la clase: ")
                                             if clase == nombre_clase:
+                                                nuevo_nombre = input("Ingrese el nuevo nombre de la clase: ")
                                                 carrera['clases'][i] = nuevo_nombre
                                                 print("Carrera modificada correctamente.")
                                                 break
-                                        else:
-                                            print("Clase no encontrado.")
-                                        break
-                                else:
-                                    print("Carrera no encontrada.")
+                                            else:
+                                                print("Clase no encontrado.")
+                                    else:
+                                        print("Carrera no encontrada.")
                             case 4:
-                                nombre_carrera = input("Ingrese el nombre de la carrera: ")
-                                nombre_eliminar = input("Ingrese el nombre de la clase que desea eliminar: ")
-
-                                for carrera in carreras:
-                                    if carrera['carrera'] == nombre_carrera:                #for carrera in carreras:                                                                             
-                                        for i, clase in enumerate(carrera['clases']):       #   if carrera['carrera'] == nombre_carrera:                                                                              
-                                            if clase == nombre_eliminar:                    #       if nombre_eliminar in carrera['clases']:                                                                           
-                                                carrera['clases'].pop(i)                    #           carrera['clases'].remove(nombre_eliminar)                                                                       
-                                                print("Clase borrada correctamente.")       #           print("Clase eliminada correctamente.")                                                                       
-                                                break                                       #        else:                                                        
-                                        else:                                               #             print("Clase no encontrada")                                                                                                           
-                                            print("Clase no encontrada.")                   #        break
-                                        break
-                                else:
-                                    print("Carrera no encontrada.")
+                                nombre_carrera = input("Ingrese el nombre de la carrera: ")                             # for carrera in carreras:
+                                print()                                                                                 #     if carrera['carrera'] == nombre_carrera:
+                                for carrera in carreras:                                                                #         for i, clase in enumerate(carrera['clases']):
+                                    if carrera['carrera'] == nombre_carrera:                                            #             nombre_eliminar = input("Ingrese el nombre de la clase que desea eliminar: ")
+                                        nombre_eliminar = input("Ingrese el nombre de la clase que desea eliminar: ")   #             if clase == nombre_eliminar:
+                                        if nombre_eliminar in carrera['clases']:                                        #                 carrera['clases'].pop(i)
+                                            carrera['clases'].remove(nombre_eliminar)                                   #                 print("Clase borrada correctamente.")
+                                            print("Clase eliminada correctamente.")                                     #                 break
+                                            break                                                                       #         else:
+                                        else:                                                                           #             print("Clase no encontrada.")
+                                            print("Clase no encontrada.")                                               #         break
+                                    else:                                                                               # else:
+                                        print("Carrera no encontrada.")                                                 #     print("Carrera no encontrada.")                                                      
                             case 5:
                                 print("Regresando al menu anterior....")
                                 seguir_clase = False
