@@ -3,7 +3,7 @@ seguir = True
 
 while(seguir):
     try:
-        print("------------ Menu ---------------")
+        print("\n------------ Menu ---------------")
         print("1. Agregar carrera")
         print("2. Mostrar carrera")
         print("3. Actualizar carrera")
@@ -52,11 +52,12 @@ while(seguir):
                 seguir_clase = True
                 while(seguir_clase):
                     try:
+                        print("\n------------ Menu clases --------------")
                         print("1. Agregar clases")
                         print("2. Mostrar clases")
                         print("3. Actualizar clases")
                         print("4. Eliminar clases")
-                        print("5. Salir")
+                        print("5. Regresar")
                         opcion_clase = int(input("Seleccione una opcion: "))
                     except:
                         print("Opcion no valida.")
@@ -71,8 +72,12 @@ while(seguir):
                                         if 'clases' not in carrera:
                                             carrera['clases'] = []
                                         carrera['clases'].append(nombre_clase)
-                                    print("Clase agregada correctamente.")
-                                    break
+                                        print("Clase agregada correctamente.")
+                                        break
+                                    else:
+                                        print("Error al agregar clase")
+                                else:
+                                    print("Carrera no encontrada.")
                             case 2:
                                 nombre_carrera = input("Ingrese el nombre de la carrera: ")
 
@@ -86,10 +91,10 @@ while(seguir):
                                             print("No hay clases registradas.")
                                         break
                                 else:
-                                    print("No encontrado.")
+                                    print("Carrera no encontrada.")
                             case 3:
                                 nombre_carrera = input("Ingrese el nombre de la carrera: ")
-                                nombre_clase = input("Ingrese el nombre de la clase")
+                                nombre_clase = input("Ingrese el nombre de la clase: ")
                                 nuevo_nombre = input("Ingrese el nuevo nombre de la clase: ")
 
                                 for carrera in carreras:
@@ -121,8 +126,10 @@ while(seguir):
                                 else:
                                     print("Carrera no encontrada.")
                             case 5:
-                                print("Hasta la proxima.")
+                                print("Regresando al menu anterior....")
                                 seguir_clase = False
+                            case default:
+                                print("Opcion no valida.")
             case 6:
                 print("Saliendo....")
                 seguir = False
