@@ -1,9 +1,9 @@
 class Casa:
     #Direccion
     #Descripcion
-    def __init__(self, direccion, descripcion):
+    def __init__(self, direccion, descripcionCasa):
         self.__direccion = direccion
-        self.__descripcion = descripcion
+        self.__descripcionCasa = descripcionCasa
         self.cuartos = []
         self.salas = []
         self.cocinas = []
@@ -14,16 +14,46 @@ class Casa:
     def setDireccion(self, direccion):
         self.__direccion = direccion
     
-    def setDescripcion(self, descripcion):
-        self.__descripcion = descripcion
+    def setDescripcion(self, descripcionCasa):
+        self.__descripcionCasa = descripcionCasa
 
     #Getters
     def getDireccion(self):
         return self.__direccion
     
     def getDescripcion(self):
-        return self.__descripcion
+        return self.__descripcionCasa
 
+class Cocina:
+    #Electrodomésticos Incluidos
+    #Medidas
+    #Material Desayunador
+    def __init__(self, electrodomesticos, medidas, materialDesayunador) -> None:
+        self.__electrodomesticos = electrodomesticos
+        self.__medidas = medidas
+        self.__materialDesayunador = materialDesayunador
+        self.lavatrastos = []
+
+    #Setters
+    def setElectrodomesticos(self, electrodomesticos):
+        self.__electrodomesticos = electrodomesticos
+
+    def setMedidas(self, medidas):
+        self.__medidas = medidas
+
+    def setMaterialDesayunador(self, materialDesayunador):
+        self.__materialDesayunador = materialDesayunador
+    
+    #Getters
+    def getEletrodomesticos(self):
+        return self.__electrodomesticos
+    
+    def getMedidas(self):
+        return self.__medidas
+    
+    def getMaterialDesayunador(self):
+        return self.__materialDesayunador
+    
 class Cuarto:
     #Numero de Ventanas
     #Medidas
@@ -47,24 +77,24 @@ class Cuarto:
 
 class Sala:
     #Chimenea
-    #Descripción
-    def __init__(self, chimenea, descripcion):
+    #Descripción Sala
+    def __init__(self, chimenea, descripcionSala):
         self.__chimenea = chimenea
-        self.__descripcion = descripcion
+        self.__descripcionSala = descripcionSala
 
     #Setters    
     def setChimenea(self, chimenea):
         self.__chimenea = chimenea
     
-    def setDescripcion(self, descripcion):
-        self.__descripcion = descripcion
+    def setDescripcionSala(self, descripcionSala):
+        self.__descripcionSala = descripcionSala
 
     #Getters
     def getChimenea(self):
         return self.__chimenea
     
     def getDescripcion(self):
-        return self.__descripcion
+        return self.__descripcionSala
     
 class Lavatrasto:
     #Depositos
@@ -91,10 +121,10 @@ class Patio:
     #Área de Socialización
     #Medidas
     #Descripción
-    def __init__(self, areaSocializacion, medidas, descripcion):
+    def __init__(self, areaSocializacion, medidas, descripcionPatio):
         self.__areaSocializacion = areaSocializacion
         self.__medidas = medidas
-        self.__descripcion = descripcion
+        self.__descripcionPatio = descripcionPatio
 
     #Setters
     def setAreaSocializacion(self, areaSocializacion):
@@ -103,8 +133,8 @@ class Patio:
     def setMedidas(self, medidas):
         self.__medidas = medidas
     
-    def setDescripcion(self, descripcion):
-        self.__descripcion = descripcion
+    def setDescripcion(self, descripcionPatio):
+        self.__descripcionPatio = descripcionPatio
 
     #Getters
     def getAreaSocializacion(self):
@@ -114,7 +144,7 @@ class Patio:
         return self.__medidas
     
     def getDescripcion(self):
-        return self.__descripcion
+        return self.__descripcionPatio
 
 class Estado:
     # Nombre
