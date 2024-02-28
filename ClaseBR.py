@@ -1,3 +1,29 @@
+class Casa:
+    #Direccion
+    #Descripcion
+    def __init__(self, direccion, descripcion):
+        self.__direccion = direccion
+        self.__descripcion = descripcion
+        self.cuartos = []
+        self.salas = []
+        self.cocinas = []
+        self.patios = []
+        self.estados = []
+
+    #Setters
+    def setDireccion(self, direccion):
+        self.__direccion = direccion
+    
+    def setDescripcion(self, descripcion):
+        self.__descripcion = descripcion
+
+    #Getters
+    def getDireccion(self):
+        return self.__direccion
+    
+    def getDescripcion(self):
+        return self.__descripcion
+
 class Cuarto:
     #Numero de Ventanas
     #Medidas
