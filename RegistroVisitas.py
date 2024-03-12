@@ -13,6 +13,7 @@ class Persona:
         self.__apellido1 = apellido1
         self.__apellido2 = apellido2
         self.__direccion = direccion
+        self._tipo = ""
 
     #Setters
     def setId(self, id):
@@ -32,7 +33,7 @@ class Persona:
 
     def setDireccion(self, direccion):
         self.__direccion = direccion
-    
+
     #Getters
     def getId(self):
         return self.__id
@@ -53,8 +54,8 @@ class Persona:
         return self.__direccion
     
     def __str__(self):
-        return f"\nIdentidad: {self.getId()}\nNombre Completo: {self.getNombre1()} {self.getNombre2()} {self.getApellido1()} {self.getApellido2()}\nDirección: {self.getDireccion()}"
-#persona = Persona(123,"Sahid", "Nelson", "Pineda", "Gonzalez", "EZA")
+        return f"\nTipo: {self._tipo}\nIdentidad: {self.getId()}\nNombre Completo: {self.getNombre1()} {self.getNombre2()} {self.getApellido1()} {self.getApellido2()}\nDirección: {self.getDireccion()}"
+
 class Empleados(Persona):
     # - Numero de Empleado: int
 
@@ -81,6 +82,7 @@ class Maestro(Empleados):
         super().__init__(id, nombre1, nombre2, apellido1, apellido2, direccion, nEmpleado)
         self.__facultad = facultad
         self.__especializacion = especializacion
+        self._tipo = "Maestro"
 
     #Setters
     def setFacultad(self, facultad):
@@ -97,16 +99,17 @@ class Maestro(Empleados):
         return self.__especializacion
     
     def __str__(self):
-        return super().__str__() + f"\nFacultad: {self.getFacultad()}\nEspecialización: {self.getEspecializacion()}\nInformación del Maestro"
+        return Empleados.__str__(self) + f"\nFacultad: {self.getFacultad()}\nEspecialización: {self.getEspecializacion()}"
     
 class Administrativo(Empleados):
     # - Area: string
     # - Campo: string
 
-    def __init__(self, id, nombre1, nombre2, apellido1, apellido2, direccion, nEmpleado, area, campo):
+    def __init__(self, id = 123, nombre1 = '', nombre2= '', apellido1 = '', apellido2= '', direccion = '', nEmpleado = 456, area = '', campo= ''):
         super().__init__(id, nombre1, nombre2, apellido1, apellido2, direccion, nEmpleado)
         self.__area = area
         self.__campo = campo
+        self._tipo = "Administrativo"
 
     #Setters
     def setArea(self, area):
@@ -123,7 +126,7 @@ class Administrativo(Empleados):
         return self.__campo
     
     def __str__(self):
-        return super().__str__() + f"Área: {self.getArea()}\nCampo: {self.getCampo()}\nInformación de Empleado Administrativo"
+        return Empleados.__str__(self) + f"\nÁrea: {self.getArea()}\nCampo: {self.getCampo()}"
     
 class Alumno(Persona):
     # - Carrera: string
@@ -135,6 +138,7 @@ class Alumno(Persona):
         self.__carrera = carrera
         self.__horario = horario
         self.__nCuenta = nCuenta
+        self._tipo = "Alumno"
 
     #Setters
     def setCarrera(self, carrera):
@@ -157,7 +161,7 @@ class Alumno(Persona):
         return self.__nCuenta
     
     def __str__(self):
-        return super().__str__() + f"\nCarrera: {self.getCarrera()}\nHorario: {self.getHorario()}\nNo. de Cuenta: {self.getNCuenta()}\nInformación del Alumno"
+        return super().__str__() + f"\nCarrera: {self.getCarrera()}\nHorario: {self.getHorario()}\nNo. de Cuenta: {self.getNCuenta()}"
     
 class Visitas(Persona):
     # - Razon Visita: string
@@ -167,6 +171,7 @@ class Visitas(Persona):
         super().__init__(id, nombre1, nombre2, apellido1, apellido2, direccion)
         self.__razonVisita = razonVisita
         self.__edificio = edificio
+        self._tipo = "Visita"
 
     #Setters
     def setRazonVisita(self, razonVisita):
@@ -183,7 +188,7 @@ class Visitas(Persona):
         return self.__edificio
     
     def __str__(self):
-        return super().__str__() + f"\nRazón de Visita: {self.getRazonVisita()}\nEdificio: {self.getEdificio()}\nInformación del Visitante"
+        return super().__str__() + f"\nRazón de Visita: {self.getRazonVisita()}\nEdificio: {self.getEdificio()}"
     
 class Jefe(Maestro, Administrativo):
     # - Fecha de Inicio: string
@@ -191,10 +196,11 @@ class Jefe(Maestro, Administrativo):
     # - Jefe: boolean
     def __init__(self, id, nombre1, nombre2, apellido1, apellido2, direccion, nEmpleado, facultad, especializacion, fechaInicio, fechaFin, jefe):
         Maestro.__init__(self, id, nombre1, nombre2, apellido1, apellido2, direccion, nEmpleado, facultad, especializacion)
-        Administrativo.__init__(self, id, nombre1, nombre2, apellido1, apellido2, direccion, nEmpleado, None, None)
+        Administrativo.__init__(self, id, nombre1, nombre2, apellido1, apellido2, direccion, nEmpleado)
         self.__fechaInicio = fechaInicio
         self.__fechaFin = fechaFin
         self.__jefe = bool(jefe)
+        self._tipo = "Jefe"
 
     #Setters
     def setFechaInicio(self, fechaInicio):
@@ -217,13 +223,13 @@ class Jefe(Maestro, Administrativo):
         return self.__jefe
     
     def __str__(self):
-        return super().__str__() + f"Fecha de Inicio: {self.getFechaInicio()}\nFecha Fin: {self.getFechaFin()}\nJefe: {self.getJefe()}\nInformación del Jefe/Coordinador"
+        return Maestro.__str__(self) + f"\nFecha de Inicio: {self.getFechaInicio()}\nFecha Fin: {self.getFechaFin()}\nJefe: {self.getJefe()}"
     
-class RegistroIngreso:
+class Registro:
     def __init__(self):
         self.__visitas = []
 
-    def agregarVisita(self, tipo):
+    def Agregar(self, tipo):
         print("\n\tREGISTRANDO INFORMACIÓN")
         id = int(input("Ingrese su número de Identidad: "))
         nombre1 = input("Ingrese su primer nombre: ")
@@ -271,12 +277,18 @@ class RegistroIngreso:
             print("Opcion no válida.")
         print("Registrado correctamente.")
 
-    def mostrarVisitas(self):
+    def Mostar(self):
         print("\nINFORMACION DEL REGISTRO DE INGRESO")
         for visita in self.__visitas:
             print(visita)
 
-visitas = RegistroIngreso()
+    def Modificar(self):
+        pass
+
+    def Eliminar(self):
+        pass
+
+visitas = Registro()
 
 seguir = True
 
@@ -295,9 +307,9 @@ while(seguir):
         match opcion:
             case 1:
                 tipo = int(input("\n1. Empleado\n2. Alumno\n3. Visitante\nSeleccione una opción: "))
-                visitas.agregarVisita(tipo)
+                visitas.Agregar(tipo)
             case 2:
-                visitas.mostrarVisitas()
+                visitas.Mostar()
             case 3:
                 pass
             case 4:
