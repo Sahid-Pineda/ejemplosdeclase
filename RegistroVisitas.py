@@ -254,8 +254,6 @@ class Registro:
             elif rol == 3:
                 facultad = input("\nIngrese su Facultad: ")
                 especializacion = input("Ingrese su Especialización: ")
-                # areaBoss = input("Ingrese su área: ")
-                # campoBoss = input("Ingrese su campo: ")
                 fechaInicio = input("Ingrese su Fecha de inicio en el cargo: ")
                 fechaFin = input("Ingrese su Fecha Fin en el cargo: ")
                 identificarCargo = input("Si es Jefe escriba 'j', si es Coordinador escriba 'c': ")
